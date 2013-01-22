@@ -2,6 +2,7 @@
 
 ##About
 * Http File Viewer using PHP Language.
+* Support mobile environments.
 
 ##SetUp
 * Upload `index.php` and `folder.gif` to your server directory that you want to apply File Viewer.
