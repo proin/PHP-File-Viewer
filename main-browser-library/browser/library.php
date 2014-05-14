@@ -76,11 +76,9 @@
 	function display_error_message($message)
 	{
 		return '
-		<table width="100%" cellpadding="20" cellspacing="5">
 			<tr>
-				<td bgcolor="#FFBBBD" valign="middle">'.$message.'</td>
-			</tr>
-		</table>';
+				<td colspan="4"><div class="alert alert-danger">'.$message.'</div></td>
+			</tr>';
 	}
 	
 	$url_folder = base64_decode(trim($_GET['folder']));
