@@ -9,7 +9,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 	
-	<title>Utility</title>
+	<title>MOB LAB. Sharing</title>
 	
 	<script src="main-browser-library/jquery/jquery-2.1.1.min.js"></script>
 	<script src="main-browser-library/bootstrap-3.1-2.1/js/bootstrap.min.js"></script>
@@ -143,21 +143,27 @@
 					
 					$file_link = $files['link'][$key];
 					
-					// icons setting
-					$icons = "";
-					if(strpos($files['name'][$key], '.zip') !== false || strpos($files['name'][$key], '.tar') !== false || strpos($files['name'][$key], '.gz') !== false) {
-						$icons = "<span class=\"glyphicon glyphicon-compressed\"></span>";	
-					}
-
-					if(strpos($files['name'][$key], '.png') !== false || strpos($files['name'][$key], '.jpeg') !== false || strpos($files['name'][$key], '.jpg') !== false || strpos($files['name'][$key], '.bmp') !== false
-						|| strpos($files['name'][$key], '.gif') !== false) {
-						$icons = "<span class=\"glyphicon glyphicon-picture\"></span>";	
-					}					
-					
-					// print
 					echo '<tr class="'.$file_class.'">';
-					echo '<td class="text-center">'.$icons.'</td>';
-					echo '<td><a href="'.$file_link.'">'.$files['name'][$key].'</a></div></td>';
+					echo "<td class=\"text-center\">";
+					
+					// icons setting
+					if(strpos($files['name'][$key], '.zip') !== false || strpos($files['name'][$key], '.tar') !== false || strpos($files['name'][$key], '.gz') !== false) {
+						echo "<span class=\"glyphicon glyphicon-compressed\"></span></td>";
+						echo '<td><a href="'.$file_link.'" target="_blank">'.$files['name'][$key].'</a></div></td>';
+					} else if(strpos($files['name'][$key], '.png') !== false || strpos($files['name'][$key], '.jpeg') !== false || strpos($files['name'][$key], '.jpg') !== false || strpos($files['name'][$key], '.bmp') !== false || strpos($files['name'][$key], '.gif') !== false) {
+						echo "<span class=\"glyphicon glyphicon-picture\"></span></td>";	
+						echo '<td><a href="'.$file_link.'" target="_blank">'.$files['name'][$key].'</a></div></td>';
+					} else if(strpos($files['name'][$key], '.html') !== false || strpos($files['name'][$key], '.js') !== false || strpos($files['name'][$key], '.css') !== false || strpos($files['name'][$key], '.php') !== false) {
+						echo "<span class=\"glyphicon glyphicon-globe\"></span></td>";	
+						echo '<td><a href="'.$file_link.'" target="_blank">'.$files['name'][$key].'</a></div></td>';
+					} else if(strpos($files['name'][$key], '.pdf') !== false || strpos($files['name'][$key], '.doc') !== false || strpos($files['name'][$key], '.docx') !== false || strpos($files['name'][$key], '.hwp') !== false) {
+						echo "<span class=\"glyphicon glyphicon-book\"></span></td>";	
+						echo '<td><a href="'.$file_link.'" target="_blank">'.$files['name'][$key].'</a></div></td>';
+					} else {
+						echo "</td>";
+						echo '<td><a href="'.$file_link.'">'.$files['name'][$key].'</a></div></td>';
+					}
+					
 					echo '<td>'.letter_size($files['size'][$key]).'</td>';
 					echo '<td>'.$files['date'][$key].'</td></tr>';
 					$count++;
